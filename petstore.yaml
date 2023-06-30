@@ -5,6 +5,8 @@ servers:
   - url: //petstore.swagger.io/sandbox
     description: Sandbox server
 info:
+  x-metadata: 
+    owner: 'Roman Sainchuk'
   description: |
     This is a sample server Petstore server.
     You can find out more about Swagger at
