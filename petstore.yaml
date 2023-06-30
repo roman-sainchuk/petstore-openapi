@@ -231,7 +231,7 @@ paths:
       tags:
         - pet
       summary: OperationId with quotes
-      operationId: operationIdWith"quotes
+      operationId: operationIdWithquotes
       responses:
         '200':
           description: successful operation
