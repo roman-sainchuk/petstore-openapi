@@ -49,7 +49,7 @@ info:
 
     <SecurityDefinitions />
 
-  version: 1.0.1
+  version: 1.0.2
   title: Another Swagger Petstore
   termsOfService: 'http://swagger.io/terms/'
   contact:
