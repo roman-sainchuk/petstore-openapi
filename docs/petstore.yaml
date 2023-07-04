@@ -27,7 +27,7 @@ info:
     tool and [ReDoc](https://github.com/Redocly/redoc) documentation. In addition to standard
     OpenAPI syntax we use a few [vendor extensions](https://github.com/Redocly/redoc/blob/master/docs/redoc-vendor-extensions.md).
 
-    ## Subheader 1
+    ## Subheader 1 12
 
     Consectetur adipiscing elit. Etiam fringilla tincidunt magna non dignissim. Vestibulum vestibulum ipsum augue, sed rhoncus diam consequat sodales. Sed facilisis maximus enim, ut scelerisque lorem ullamcorper eget. Suspendisse venenatis non lectus sed bibendum.
     *Duis neque ante, ultrices at ornare aliquam, vulputate ac dolor.*
