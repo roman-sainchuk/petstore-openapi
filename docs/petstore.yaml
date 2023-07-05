@@ -3,7 +3,7 @@ servers:
   - url: //petstore.swagger.io/v2
     description: Default server
   - url: //petstore.swagger.io/sandbox
-    description: Sandbox server
+    description: Sandbox servereeeeeeee
 info:
   x-metadata: 
     owner: 'Roman Sainchuk'
