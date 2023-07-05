@@ -6,7 +6,7 @@ servers:
     description: Sandbox server
 info:
   x-metadata: 
-    owner: 'Roman Sainchuk'
+    owner: 'TeamB'
   description: |
     This is a sample server Petstore server.dgfs
     You can find out more about Swagfdfgdfdfer atasda
