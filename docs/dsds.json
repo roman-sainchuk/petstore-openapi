@@ -32,7 +32,7 @@
             "targetLevel": "lint",
             "relativePath": "petstore-new-version/petstore.yaml"
         },
-        "/apis/roman-sainchuk/openapi-file/another-swagger-petstore/petstore/": {
+        "/apis/roman-sainchuk/openapi-file/another-swagger-petstoresdsd/petstore/": {
             "title": "Another Swagger Petstore",
             "levels": {
                 "lint": {
