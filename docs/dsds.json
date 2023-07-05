@@ -18,7 +18,7 @@
             "targetLevel": "lint",
             "relativePath": "petstore/petstore.yaml"
         },
-        "/petstore-new-version/petstoаffre/": {
+        "/petstore-new-version/petstoаdffre/": {
             "title": "Another Swagger Petstore",
             "levels": {
                 "lint": {
