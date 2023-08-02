@@ -7,7 +7,6 @@ servers:
 info:
   x-metadata:
     owner: "Roman Sainchuk"
-    team: "ReDoc team"
   description: |
     This is a sample server Petstore
     You can find out more about Swagger at -------------
