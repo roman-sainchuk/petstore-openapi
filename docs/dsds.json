@@ -8,7 +8,7 @@
             "title": "Swagger Petstore",
             "levels": {
                 "lint": {
-                    "errors": 0,
+                    "errors": 1,
                     "ignored": 0,
                     "problems": [],
                     "warnings": 0
