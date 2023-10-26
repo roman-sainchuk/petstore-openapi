@@ -9,7 +9,7 @@
             "levels": {
                 "lint": {
                     "errors": 1,
-                    "ignored": 0,
+                    "ignored": 1,
                     "problems": [],
                     "warnings": 0
                 }
