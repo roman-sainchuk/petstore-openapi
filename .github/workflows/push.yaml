@@ -50,7 +50,7 @@ jobs:
           CI: true
       - name: Wait for deployment
         run: |-
-          DEPLOY_STATUS=`npm run push-status -- \
+          DEPLOY_STATUS=`npm run -s push-status -- \
           --organization default \
           --project 'cicd-pushes' \
           --pushId "${{needs.install-and-push.outputs.pushId}}" \
@@ -61,7 +61,7 @@ jobs:
             printf "🕒 Waiting for deployment to finish\n"
             sleep 5
 
-            DEPLOY_STATUS=`npm run push-status -- \
+            DEPLOY_STATUS=`npm run -s push-status -- \
             --organization default \
             --project 'cicd-pushes' \
             --pushId "${{needs.install-and-push.outputs.pushId}}" \
