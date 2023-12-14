@@ -67,8 +67,8 @@ jobs:
 
           DEPLOY_STATUS=`echo $PUSH | jq '.status.deploy.status'`
 
-          while [[ ("$DEPLOY_STATUS" != "SUCCEEDED") || ("$DEPLOY_STATUS" != "FAILED") ]]; do
-            printf "🕒 Waiting for deployment to finish. Current status: "$DEPLOY_STATUS"\n"
+          while [[ ($DEPLOY_STATUS != "SUCCEEDED") || ($DEPLOY_STATUS != "FAILED") ]]; do
+            printf "🕒 Waiting for deployment to finish. Current status: $DEPLOY_STATUS\n"
             sleep 5
 
             DEPLOY_STATUS=`npm run -s push-status -- \
