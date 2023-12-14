@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "push": "redocly push"
+  },
+  "dependencies": {
+    "@redocly/cli": "file:redocly-cli-1.5.0.tgz",
+    "@redocly/openapi-core": "file:redocly-openapi-core-1.5.0.tgz"
+  }
+}
