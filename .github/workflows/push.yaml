@@ -76,5 +76,12 @@ jobs:
 
             DEPLOY_STATUS=`get_push | jq -r '.status.deploy.status'`
           done
+
+          if [[ $DEPLOY_STATUS == "FAILED" ]]; then
+            echo "❌ Deployment failed"
+            exit 1
+          fi
+
+          echo "🚀 Deployment succeeded"
         env:
           REDOCLY_AUTHORIZATION: ${{ secrets.REDOCLY_AUTHORIZATION }}
