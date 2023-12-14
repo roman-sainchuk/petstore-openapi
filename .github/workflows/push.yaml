@@ -57,7 +57,7 @@ jobs:
           --format json \
           --domain 'https://app.lab1.blueharvest.cloud' | jq '.status.deploy.status'`
 
-          while [ "$DEPLOY_STATUS" != "SUCCEEDED" ||  "$DEPLOY_STATUS" != "FAILED" ]; do
+          while [[ "$DEPLOY_STATUS" != "SUCCEEDED" ||  "$DEPLOY_STATUS" != "FAILED" ]]; do
             printf "🕒 Waiting for deployment to finish\n"
             sleep 5
 
