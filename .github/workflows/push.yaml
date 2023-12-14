@@ -50,13 +50,16 @@ jobs:
           CI: true
       - name: Wait for deployment
         run: |-
-          PUSH=`npm run -s push-status -- \
-          --organization default \
-          --project 'cicd-pushes' \
-          --pushId "${{needs.install-and-push.outputs.pushId}}" \
-          --format json \
-          --domain 'https://app.lab1.blueharvest.cloud'`
+          get_push () {
+            npm run -s push-status -- \
+              --organization default \
+              --project 'cicd-pushes' \
+              --pushId "${{needs.install-and-push.outputs.pushId}}" \
+              --format json \
+              --domain 'https://app.lab1.blueharvest.cloud'
+          }
 
+          PUSH=`get_push`;
           HAS_CHANGES=`echo $PUSH | jq '.hasChanges'`;
           OUTDATED=`echo $PUSH | jq '.isOutdated'`;
 
@@ -71,12 +74,7 @@ jobs:
             printf "🕒 Waiting for deployment to finish. Current status: $DEPLOY_STATUS\n"
             sleep 5
 
-            DEPLOY_STATUS=`npm run -s push-status -- \
-            --organization default \
-            --project 'cicd-pushes' \
-            --pushId "${{needs.install-and-push.outputs.pushId}}" \
-            --format json \
-            --domain 'https://app.lab1.blueharvest.cloud' | jq '.status.deploy.status'`
+            DEPLOY_STATUS=`get_push | jq '.status.deploy.status'`
           done
         env:
           REDOCLY_AUTHORIZATION: ${{ secrets.REDOCLY_AUTHORIZATION }}
