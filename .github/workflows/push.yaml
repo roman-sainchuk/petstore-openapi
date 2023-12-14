@@ -8,6 +8,8 @@ on:
 jobs:
   install-and-push:
     runs-on: ubuntu-latest
+    outputs:
+      pushId: ${{ steps.push.outputs.pushId }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -19,14 +21,30 @@ jobs:
         env:
           CI: true
       - name: Push to remote
+        id: push
         run: |-
-          npm run push -- docs/s-petstore.yaml \
+          echo "pushId=`npm run -s push -- docs/s-petstore.yaml \
           --organization default \
           --project 'cicd-pushes' \
           --mountPath 'docs/remotes/cicd' \
           --branch "${{ github.ref_name }}" \
           --author "${{ github.event.head_commit.author.name }} <${{ github.event.head_commit.author.email }}>" \
           --message "${{ github.event.head_commit.message }}" \
+          --domain 'https://app.lab1.blueharvest.cloud'`" >> "$GITHUB_OUTPUT"
+        env:
+          REDOCLY_AUTHORIZATION: ${{ secrets.REDOCLY_AUTHORIZATION }}
+  wait-for-deploy:
+    runs-on: ubuntu-latest
+    needs: install-and-push
+    steps:
+      - name: Wait for deployment
+        run: |-
+          npm run push-status 
+          --organization default \
+          --project 'cicd-pushes' \
+          --pushId "${{needs.install-and-push.outputs.pushId}}" \
+          --format json \
           --domain 'https://app.lab1.blueharvest.cloud'
         env:
           REDOCLY_AUTHORIZATION: ${{ secrets.REDOCLY_AUTHORIZATION }}
+    
