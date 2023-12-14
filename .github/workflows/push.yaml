@@ -60,7 +60,7 @@ jobs:
           HAS_CHANGES=`echo $PUSH | jq '.hasChanges'`;
           OUTDATED=`echo $PUSH | jq '.isOutdated'`;
 
-          if [[ "$HAS_CHANGES" == "true" && "$OUTDATED" == "false" ]]; then
+          if [[ "$HAS_CHANGES" == "false" || "$OUTDATED" == "true" ]]; then
             echo "🚀 Deployment is up to date"
             exit 0
           fi
