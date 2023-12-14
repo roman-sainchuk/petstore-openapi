@@ -63,18 +63,18 @@ jobs:
           HAS_CHANGES=`echo $PUSH | jq '.hasChanges'`;
           OUTDATED=`echo $PUSH | jq '.isOutdated'`;
 
-          if [[ "$HAS_CHANGES" == "false" || "$OUTDATED" == "true" ]]; then
+          if [[ $HAS_CHANGES == "false" || $OUTDATED == "true" ]]; then
             echo "🚀 Deployment is up to date"
             exit 0
           fi
 
-          DEPLOY_STATUS=`echo $PUSH | jq '.status.deploy.status'`
+          DEPLOY_STATUS=`echo $PUSH | jq -r '.status.deploy.status'`
 
-          while [[ "$DEPLOY_STATUS" != "SUCCEEDED" && "$DEPLOY_STATUS" != "FAILED" ]]; do
+          while [[ $DEPLOY_STATUS != "SUCCEEDED" && $DEPLOY_STATUS != "FAILED" ]]; do
             printf "🕒 Waiting for deployment to finish. Current status: $DEPLOY_STATUS\n"
             sleep 5
 
-            DEPLOY_STATUS=`get_push | jq '.status.deploy.status'`
+            DEPLOY_STATUS=`get_push | jq -r '.status.deploy.status'`
           done
         env:
           REDOCLY_AUTHORIZATION: ${{ secrets.REDOCLY_AUTHORIZATION }}
