@@ -30,7 +30,7 @@ jobs:
           --branch "${{ github.ref_name }}" \
           --author "${{ github.event.head_commit.author.name }} <${{ github.event.head_commit.author.email }}>" \
           --message "${{ github.event.head_commit.message }}" \
-          --domain 'https://app.lab1.blueharvest.cloud'`" >> "$GITHUB_OUTPUT"
+          --domain 'https://app.lab1.blueharvest.cloud'`"
         env:
           REDOCLY_AUTHORIZATION: ${{ secrets.REDOCLY_AUTHORIZATION }}
   wait-for-deploy:
