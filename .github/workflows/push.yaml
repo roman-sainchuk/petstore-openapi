@@ -48,7 +48,7 @@ jobs:
           CI: true
       - name: Wait for deployment
         run: |-
-          npm run push-status 
+          npm run push-status -- \
           --organization default \
           --project 'cicd-pushes' \
           --pushId "${{needs.install-and-push.outputs.pushId}}" \
