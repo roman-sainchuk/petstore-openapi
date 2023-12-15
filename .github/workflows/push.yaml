@@ -75,7 +75,7 @@ jobs:
           get_push () {
             npm run -s push-status -- \
               --organization default \
-              --project 'pushes' \
+              --project 'pushes-demo' \
               --pushId "${{needs.install-and-push.outputs.pushId}}" \
               --format json \
               --domain 'https://app.lab1.blueharvest.cloud'
