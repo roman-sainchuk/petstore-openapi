@@ -70,22 +70,25 @@ jobs:
           poll_status () {
             local PUSH_RESPONSE=$1
             local JQ_EXPR=$2
-            local DEPLOY_STATUS=`echo $PUSH_RESPONSE | jq -r $JQ_EXPR`
+            local DEPLOY_STATUS=`echo $PUSH_RESPONSE | jq -r "$JQ_EXPR.status"`
             local BUILD_TYPE=$3
 
             while [[ $DEPLOY_STATUS != "SUCCEEDED" && $DEPLOY_STATUS != "FAILED" ]]; do
               printf "🕒 Waiting for $BUILD_TYPE deployment to finish. Current status: $DEPLOY_STATUS\n"
               sleep 5
 
-              DEPLOY_STATUS=`get_push | jq -r $JQ_EXPR`
+              PUSH_RESPONSE=`get_push`;
+              DEPLOY_STATUS=`echo $PUSH_RESPONSE | jq -r "$JQ_EXPR.status"`
             done
 
+            DEPLOY_URL=`echo $PUSH_RESPONSE | jq -r "$JQ_EXPR.url"`
+
             if [[ $DEPLOY_STATUS == "FAILED" ]]; then
-              echo "❌ ${BUILD_TYPE^} deployment failed"
+              echo "❌ ${BUILD_TYPE^} deployment failed. Url: $DEPLOY_URL"
               exit 1
             fi
 
-            echo "🚀 ${BUILD_TYPE^} deployment succeeded"
+            echo "🚀 ${BUILD_TYPE^} deployment succeeded. Url: $DEPLOY_URL"
           }
 
           PUSH=`get_push`;
@@ -98,10 +101,10 @@ jobs:
             exit 0
           fi
 
-          poll_status "$PUSH" '.status.preview.deploy.status' 'preview'
+          poll_status "$PUSH" '.status.preview.deploy' 'preview'
 
           if [[ $IS_MAIN_BRANCH == "true" ]]; then
-            poll_status "$PUSH" '.status.production.deploy.status' 'production'  
+            poll_status "$PUSH" '.status.production.deploy' 'production'  
           fi
 
         env:
