@@ -67,9 +67,9 @@ jobs:
           }
 
           poll_status () {
-            local PUSH=$1
+            local PUSH_RESPONSE=$1
             local JQ_EXPR=$2
-            local DEPLOY_STATUS=`echo $PUSH | jq -r $JQ_EXPR`
+            local DEPLOY_STATUS=`echo $PUSH_RESPONSE | jq -r $JQ_EXPR`
             local BUILD_TYPE=$3
 
             while [[ $DEPLOY_STATUS != "SUCCEEDED" && $DEPLOY_STATUS != "FAILED" ]]; do
