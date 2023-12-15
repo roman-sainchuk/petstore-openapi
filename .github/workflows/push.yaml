@@ -28,8 +28,11 @@ jobs:
           --project 'cicd-pushes' \
           --mountPath 'docs/remotes/cicd' \
           --branch "${{ github.ref_name }}" \
+          # --namespace "${{ github.event.repository.owner.login }}" \
+          # --repository "${{ github.event.repository.name }}" \
           --author "${{ github.event.head_commit.author.name }} <${{ github.event.head_commit.author.email }}>" \
           --message "${{ github.event.head_commit.message }}" \
+          # --commitUrl "${{ github.event.head_commit.url }}" \
           --domain 'https://app.lab1.blueharvest.cloud'`" >> "$GITHUB_OUTPUT"
         env:
           REDOCLY_AUTHORIZATION: ${{ secrets.REDOCLY_AUTHORIZATION }}
@@ -59,6 +62,27 @@ jobs:
               --domain 'https://app.lab1.blueharvest.cloud'
           }
 
+          poll_status () {
+            local PUSH=$1
+            local JQ_EXPR=$2
+            local DEPLOY_STATUS=`echo $PUSH | jq -r $JQ_EXPR`
+            local BUILD_TYPE=$3
+
+            while [[ $DEPLOY_STATUS != "SUCCEEDED" && $DEPLOY_STATUS != "FAILED" ]]; do
+              printf "🕒 Waiting for $BUILD_TYPE deployment to finish. Current status: $DEPLOY_STATUS\n"
+              sleep 5
+
+              DEPLOY_STATUS=`get_push | jq -r $JQ_EXPR`
+            done
+
+            if [[ $DEPLOY_STATUS == "FAILED" ]]; then
+              echo "❌ ${BUILD_TYPE^} deployment failed"
+              exit 1
+            fi
+
+            echo "🚀 ${BUILD_TYPE^} deployment succeeded"
+          }
+
           PUSH=`get_push`;
           HAS_CHANGES=`echo $PUSH | jq '.hasChanges'`;
           OUTDATED=`echo $PUSH | jq '.isOutdated'`;
@@ -68,20 +92,9 @@ jobs:
             exit 0
           fi
 
-          DEPLOY_STATUS=`echo $PUSH | jq -r '.status.deploy.status'`
+          poll_status "$PUSH" '.status.preview.deploy.status' 'preview'
+          poll_status "$PUSH" '.status.production.deploy.status' 'production'
 
-          while [[ $DEPLOY_STATUS != "SUCCEEDED" && $DEPLOY_STATUS != "FAILED" ]]; do
-            printf "🕒 Waiting for deployment to finish. Current status: $DEPLOY_STATUS\n"
-            sleep 5
 
-            DEPLOY_STATUS=`get_push | jq -r '.status.deploy.status'`
-          done
-
-          if [[ $DEPLOY_STATUS == "FAILED" ]]; then
-            echo "❌ Deployment failed"
-            exit 1
-          fi
-
-          echo "🚀 Deployment succeeded"
         env:
           REDOCLY_AUTHORIZATION: ${{ secrets.REDOCLY_AUTHORIZATION }}
