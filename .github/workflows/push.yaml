@@ -37,10 +37,6 @@ jobs:
             IS_MAIN_BRANCH=true
           fi
 
-          echo "Commit URL: ${{ github.event.head_commit.url }}"
-          echo "Namespace: ${{ github.event.repository.owner.login }}"
-          echo "Repository: ${{ github.event.repository.name }}"
-
           pushId=`npm run -s push -- docs/s-petstore.yaml \
           --organization default \
           --project 'pushes' \
