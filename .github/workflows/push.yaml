@@ -39,17 +39,17 @@ jobs:
 
           pushId=`npm run -s push -- docs/s-petstore.yaml \
           --organization default \
-          --project 'pushes' \
+          --project 'pushes-demo' \
           --mountPath 'docs/remotes/cicd' \
           --isMainBranch $IS_MAIN_BRANCH \
           --branch "${{ github.ref_name }}" \
           --author "${{ github.event.head_commit.author.name }} <${{ github.event.head_commit.author.email }}>" \
+          --commitUrl "${{ github.event.head_commit.url }}" \
+          --namespace "${{ github.event.repository.owner.login }}" \
+          --repository "${{ github.event.repository.name }}" \
           --message "${{ github.event.head_commit.message }}" \
           --domain 'https://app.lab1.blueharvest.cloud'`
 
-          # --commitUrl "${{ github.event.head_commit.url }}" \
-          # --namespace "${{ github.event.repository.owner.login }}" \
-          # --repository "${{ github.event.repository.name }}" \
 
           echo "pushId=$pushId" >> "$GITHUB_OUTPUT"
           echo "Push ID: $pushId"
@@ -75,7 +75,7 @@ jobs:
           get_push () {
             npm run -s push-status -- \
               --organization default \
-              --project 'pushes' \
+              --project 'pushes-demo' \
               --pushId "${{needs.install-and-push.outputs.pushId}}" \
               --format json \
               --domain 'https://app.lab1.blueharvest.cloud'
