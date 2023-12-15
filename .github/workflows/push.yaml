@@ -90,6 +90,7 @@ jobs:
           PUSH=`get_push`;
           HAS_CHANGES=`echo $PUSH | jq '.hasChanges'`;
           OUTDATED=`echo $PUSH | jq '.isOutdated'`;
+          IS_MAIN_BRANCH=`echo $PUSH | jq '.isMainBranch'`;
 
           if [[ $HAS_CHANGES == "false" || $OUTDATED == "true" ]]; then
             echo "🚀 Deployment is up to date"
@@ -97,8 +98,10 @@ jobs:
           fi
 
           poll_status "$PUSH" '.status.preview.deploy.status' 'preview'
-          poll_status "$PUSH" '.status.production.deploy.status' 'production'
 
+          if [[ $IS_MAIN_BRANCH == "true" ]]; then
+            poll_status "$PUSH" '.status.production.deploy.status' 'production'  
+          fi
 
         env:
           REDOCLY_AUTHORIZATION: ${{ secrets.REDOCLY_AUTHORIZATION }}
