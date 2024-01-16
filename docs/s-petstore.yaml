@@ -14,8 +14,6 @@ info:
     [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/). sfgf
     For this sample, you can use the api key `special-key` to test the authorization filters.
     
-    lorem test
-    
     # Introduction
     This API is documented in **OpenAPI format** and is based on
     API syntax we use a few [vendor extensions](https://github.com/Redocly/redoc/blob/master/docs/redoc-vendor-extensions.md).
@@ -26,11 +24,6 @@ info:
     It was **extended** to illustrate features of [generator-openapi-repo](https://github.com/Rebilly/generator-openapi-repo)
     tool and [ReDoc](https://github.com/Redocly/redoc) documentation. In addition to standard
     OpenAPI syntax we use a few [vendor extensions](https://github.com/Redocly/redoc/blob/master/docs/redoc-vendor-extensions.md).
-
-    ## Subheader 1
-
-    Consectetur adipiscing elit. Etiam fringilla tincidunt magna non dignissim. Vestibulum vestibulum ipsum augue, sed rhoncus diam consequat sodales. Sed facilisis maximus enim, ut scelerisque lorem ullamcorper eget. Suspendisse venenatis non lectus sed bibendum.
-    *Duis neque ante, ultrices at ornare aliquam, vulputate ac dolor.*
 
     ## Subheader 2
 
