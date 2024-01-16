@@ -37,7 +37,7 @@ jobs:
             IS_MAIN_BRANCH=true
           fi
 
-          pushId=`npm run -s push -- docs/s-petstore.yaml \
+          npm run -s push -- docs/s-petstore.yaml \
           --organization default \
           --project 'push-rework' \
           --mountPath 'docs/remotes/cicd' \
@@ -49,9 +49,6 @@ jobs:
           --repository "${{ github.event.repository.name }}" \
           --message "${{ github.event.head_commit.message }}" \
           --domain 'https://app.lab1.blueharvest.cloud' \
-          --wait-for-deployment`
-
-          echo "pushId=$pushId" >> "$GITHUB_OUTPUT"
-          echo "Push ID: $pushId"
+          --wait-for-deployment
         env:
           REDOCLY_AUTHORIZATION: ${{ secrets.REDOCLY_AUTHORIZATION }}
