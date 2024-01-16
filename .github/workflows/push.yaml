@@ -39,7 +39,7 @@ jobs:
 
           npm run -s push -- docs/s-petstore.yaml \
           --organization default \
-          --project 'push-rework' \
+          --project 'cli-push-test' \
           --mountPath 'docs/remotes/cicd' \
           --isMainBranch $IS_MAIN_BRANCH \
           --branch "${{ github.ref_name }}" \
