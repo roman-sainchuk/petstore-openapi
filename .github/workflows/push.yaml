@@ -20,7 +20,7 @@ jobs:
         run: npm ci
         env:
           CI: true
-      - name: Push to remote
+      - name: Push to remote and wait for deployment
         id: push
         run: |-
           if [[ -n "${{github.event.repository.master_branch}}" ]]; then
@@ -48,36 +48,11 @@ jobs:
           --namespace "${{ github.event.repository.owner.login }}" \
           --repository "${{ github.event.repository.name }}" \
           --message "${{ github.event.head_commit.message }}" \
-          --domain 'https://app.lab1.blueharvest.cloud'`
+          --domain 'https://app.lab1.blueharvest.cloud'` \
+          --wait-for-deployment
 
 
           echo "pushId=$pushId" >> "$GITHUB_OUTPUT"
           echo "Push ID: $pushId"
-        env:
-          REDOCLY_AUTHORIZATION: ${{ secrets.REDOCLY_AUTHORIZATION }}
-  wait-for-deploy:
-    runs-on: ubuntu-latest
-    needs: install-and-push
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: "npm"
-      - name: Install dependencies
-        run: |-
-          apt-get update && apt-get install -y jq;
-          npm ci;
-        env:
-          CI: true
-      - name: Wait for deployment
-        run: |-
-        
-            npm run -s push-status "${{needs.install-and-push.outputs.pushId}}" -- \
-              --organization default \
-              --project 'push-rework' \
-              --domain 'https://app.lab1.blueharvest.cloud' \
-              --wait
-
         env:
           REDOCLY_AUTHORIZATION: ${{ secrets.REDOCLY_AUTHORIZATION }}
