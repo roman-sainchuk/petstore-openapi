@@ -28,7 +28,7 @@ jobs:
               --repository "${{ github.event.repository.name }}" \
               --created-at "${{ github.event.head_commit.timestamp }}" \
               --message "${{ github.event.head_commit.message }}" \
-              --domain "http://localhost" \
+              --domain "https://app.lab1.blueharvest.cloud" \
               --wait-for-deployment
         env:
           REDOCLY_AUTHORIZATION: ${{ secrets.REDOCLY_AUTHORIZATION }}
