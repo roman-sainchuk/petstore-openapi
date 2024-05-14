@@ -1,6 +1,6 @@
 const request = require('supertest');
 const app = require('../app');
-// 1, 2, 3, 4, 5, 6, 7, 8
+// 1, 2, 3, 4, 5, 6, 7, 8, 9
 describe('App', function() {
   it('has the default page', function(done) {
     request(app)
