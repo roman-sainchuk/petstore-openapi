@@ -1,2 +1,4 @@
 reunite:
   ignoreMarkdocErrors: true
+access:
+  requiresLogin: false
