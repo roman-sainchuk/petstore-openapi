@@ -50,7 +50,7 @@ info:
     OAuth2 - an open protocol to allow secure authorization in a simple
     and standard method from web, mobile and desktop applications.
 
-    <SecurityDefinitions />
+    <SecurityDefinitions></SecurityDefinitions>
 
   version: 1.0.0
   title: Swagger Petstore
@@ -102,11 +102,11 @@ tags:
   - name: pet_model
     x-displayName: The Pet Model
     description: |
-      <SchemaDefinition schemaRef="#/components/schemas/Pet" />
+      <SchemaDefinition schemaRef="#/components/schemas/Pet"></SchemaDefinition>
   - name: store_model
     x-displayName: The Order Model
     description: |
-      <SchemaDefinition schemaRef="#/components/schemas/Order" exampleRef="#/components/examples/Order" showReadOnly={true} showWriteOnly={true} />
+      <SchemaDefinition schemaRef="#/components/schemas/Order" exampleRef="#/components/examples/Order" showReadOnly showWriteOnly></SchemaDefinition>
 x-tagGroups:
   - name: General
     tags:
