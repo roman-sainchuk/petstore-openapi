@@ -2,7 +2,6 @@ reunite:
   ignoreMarkdocErrors: true
 access:
   requiresLogin: false
-access:
   rbac:
     content:
       '**':
