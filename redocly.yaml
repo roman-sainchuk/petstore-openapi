@@ -2,3 +2,10 @@ reunite:
   ignoreMarkdocErrors: true
 access:
   requiresLogin: false
+  rbac:
+    content:
+      '**':
+        ci-restricted: write
+        authenticated: read
+      'docs/pushed/**':
+        ci-restricted: read
