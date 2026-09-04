@@ -52,7 +52,7 @@ info:
 
     ### Security schemes
 
-    <SecurityDefinitions passwordFlow />
+    <SecurityDefinitions passwordFlow></SecurityDefinitions>
 
   version: 1.0.0
   title: Swagger Petstore
@@ -104,11 +104,11 @@ tags:
   - name: pet_model
     x-displayName: The Pet Model
     description: |
-      <SchemaDefinition schemaRef="#/components/schemas/Pet" showReadOnly={true} />
+      <SchemaDefinition schemaRef="#/components/schemas/Pet" showReadOnly></SchemaDefinition>
   - name: store_model
     x-displayName: The Order Model (v2)
     description: |
-      <SchemaDefinition schemaRef="#/components/schemas/Order" pointer="#/components/schemas/Order" showReadOnly={true} />
+      <SchemaDefinition schemaRef="#/components/schemas/Order" pointer="#/components/schemas/Order" exampleRef="#/components/examples/Order" showReadOnly showWriteOnly></SchemaDefinition>
 x-tagGroups:
   - name: General
     tags:
