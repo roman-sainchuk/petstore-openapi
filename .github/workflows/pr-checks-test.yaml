@@ -1,0 +1,16 @@
+name: PR checks test
+
+on: pull_request
+
+jobs:
+  lint-pass:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "all good"
+  lint-fail:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "::error file=docs/petstore.yaml,line=3,title=Broken link::Link /docs/missing.md does not exist"
+          echo "::warning file=docs/petstore.yaml,line=10,title=Short description::Operation description is too short"
+          exit 1
