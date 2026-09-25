@@ -1,0 +1,11 @@
+name: PR checks duplicate name
+
+on: pull_request
+
+jobs:
+  lint-fail:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          sleep 30
+          echo "same job name as in pr-checks-test.yaml, but passes"

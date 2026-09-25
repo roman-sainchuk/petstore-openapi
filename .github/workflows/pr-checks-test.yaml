@@ -14,3 +14,10 @@ jobs:
           echo "::error file=docs/petstore.yaml,line=3,title=Broken link::Link /docs/missing.md does not exist"
           echo "::warning file=docs/petstore.yaml,line=10,title=Short description::Operation description is too short"
           exit 1
+  slow-fail:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          sleep 60
+          echo "::error file=docs/petstore.yaml,line=5,title=Slow failure::Slow job failed"
+          exit 1
