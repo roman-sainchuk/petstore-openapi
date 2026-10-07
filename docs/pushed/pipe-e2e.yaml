@@ -1,0 +1,5 @@
+openapi: 3.1.0
+info:
+  title: Pipe e2e
+  version: "1791369973"
+paths: {}
