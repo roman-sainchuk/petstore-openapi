@@ -397,12 +397,14 @@ paths:
       parameters:
         - name: limit
           in: query
-          description: Maximum number of pets to return
+          description: Upper bound on the number of pets in one response
           example: 10
           schema:
             type: integer
             format: int32
             default: 20
+            minimum: 1
+            maximum: 100
         - name: offset
           in: query
           description: The number of items to skip before starting to collect the result set
