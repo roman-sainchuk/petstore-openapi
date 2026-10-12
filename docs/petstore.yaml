@@ -395,6 +395,13 @@ paths:
       description: Multiple status values can be provided with comma separated strings
       operationId: findPetsByStatus
       parameters:
+        - name: limit
+          in: query
+          description: Upper bound on the number of pets in one response
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
         - name: status
           in: query
           description: Status values that need to be considered for filter
