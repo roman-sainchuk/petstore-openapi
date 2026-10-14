@@ -52,7 +52,7 @@ info:
 
     ### Security schemes
 
-    <SecurityDefinitions passwordFlow implicitFlow></SecurityDefinitions>
+    <SecurityDefinitions implicitFlow></SecurityDefinitions>
 
   version: 1.0.0
   title: Swagger Petstore
@@ -397,7 +397,7 @@ paths:
       parameters:
         - name: limit
           in: query
-          description: Upper bound on the number of pets in one response
+          description: Upper bound on the number of pets in one response (defaults to 20)
           example: 10
           schema:
             type: integer
@@ -462,7 +462,7 @@ paths:
       parameters:
         - name: limit
           in: query
-          description: Maximum number of pets to return
+          description: Maximum number of pets to return (defaults to 20)
           example: 10
           schema:
             type: integer
