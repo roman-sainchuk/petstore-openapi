@@ -52,7 +52,7 @@ info:
 
     ### Security schemes
 
-    <SecurityDefinitions passwordFlow implicitFlow clientCredentialsFlow></SecurityDefinitions>
+    <SecurityDefinitions passwordFlow implicitFlow clientCredentialsFlow authorizationCodeFlow></SecurityDefinitions>
 
   version: 1.0.0
   title: Swagger Petstore
@@ -407,7 +407,7 @@ paths:
             maximum: 100
         - name: offset
           in: query
-          description: The number of items to skip before starting to collect the result set (zero-based)
+          description: The number of items to skip before starting to collect the result set (zero-based, defaults to 0)
           example: 0
           schema:
             type: integer
@@ -470,7 +470,7 @@ paths:
             default: 20
         - name: offset
           in: query
-          description: The number of items to skip before starting to collect the result set (zero-based)
+          description: The number of items to skip before starting to collect the result set (zero-based, defaults to 0)
           example: 0
           schema:
             type: integer
