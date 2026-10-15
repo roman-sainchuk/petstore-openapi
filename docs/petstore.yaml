@@ -52,7 +52,7 @@ info:
 
     ### Security schemes
 
-    <SecurityDefinitions passwordFlow implicitFlow clientCredentialsFlow authorizationCodeFlow deviceCodeFlow jwtBearerFlow tokenExchangeFlow refreshTokenFlow />
+    <SecurityDefinitions passwordFlow implicitFlow clientCredentialsFlow authorizationCodeFlow deviceCodeFlow jwtBearerFlow tokenExchangeFlow refreshTokenFlow></SecurityDefinitions>
 
   version: 1.0.0
   title: Swagger Petstore
@@ -104,11 +104,11 @@ tags:
   - name: pet_model
     x-displayName: The Pet Model
     description: |
-      <SchemaDefinition schemaRef="#/components/schemas/Pet" showReadOnly={true} />
+      <SchemaDefinition schemaRef="#/components/schemas/Pet" showReadOnly={true}></SchemaDefinition>
   - name: store_model
     x-displayName: The Order Model (v2)
     description: |
-      <SchemaDefinition schemaRef="#/components/schemas/Order" pointer="#/components/schemas/Order" showReadOnly={true} />
+      <SchemaDefinition schemaRef="#/components/schemas/Order" pointer="#/components/schemas/Order" showReadOnly={true}></SchemaDefinition>
 x-tagGroups:
   - name: General
     tags:
@@ -397,11 +397,22 @@ paths:
       parameters:
         - name: limit
           in: query
-          description: Upper bound on the number of pets in one response
+          description: Upper bound on the number of pets in one response (defaults to 20)
+          example: 10
           schema:
             type: integer
+            format: int32
+            default: 20
             minimum: 1
             maximum: 100
+        - name: offset
+          in: query
+          description: The number of items to skip before starting to collect the result set (zero-based, defaults to 0)
+          example: 0
+          schema:
+            type: integer
+            format: int32
+            default: 0
         - name: status
           in: query
           description: Status values that need to be considered for filter
@@ -449,6 +460,22 @@ paths:
       operationId: findPetsByTags
       deprecated: true
       parameters:
+        - name: limit
+          in: query
+          description: Maximum number of pets to return (defaults to 20)
+          example: 10
+          schema:
+            type: integer
+            format: int32
+            default: 20
+        - name: offset
+          in: query
+          description: The number of items to skip before starting to collect the result set (zero-based, defaults to 0)
+          example: 0
+          schema:
+            type: integer
+            format: int32
+            default: 0
         - name: tags
           in: query
           description: Tags to filter by
