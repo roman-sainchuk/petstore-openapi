@@ -52,7 +52,7 @@ info:
 
     ### Security schemes
 
-    <SecurityDefinitions passwordFlow implicitFlow clientCredentialsFlow authorizationCodeFlow deviceCodeFlow jwtBearerFlow />
+    <SecurityDefinitions passwordFlow implicitFlow clientCredentialsFlow authorizationCodeFlow deviceCodeFlow jwtBearerFlow tokenExchangeFlow />
 
   version: 1.0.0
   title: Swagger Petstore
