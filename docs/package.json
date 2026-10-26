@@ -2,7 +2,7 @@
   "name": "realm-example",
   "version": "1.0.0",
   "private": true,
-  "description": "Realm example for the Petstore API",
+  "description": "Realm example for the Petstore API with the pet inventory docs",
   "scripts": {
     "start": "realm develop"
   },

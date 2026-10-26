@@ -52,7 +52,7 @@ info:
 
     ### Security schemes
 
-    <SecurityDefinitions passwordFlow implicitFlow clientCredentialsFlow authorizationCodeFlow deviceCodeFlow jwtBearerFlow tokenExchangeFlow refreshTokenFlow />
+    <SecurityDefinitions passwordFlow implicitFlow clientCredentialsFlow authorizationCodeFlow deviceCodeFlow jwtBearerFlow tokenExchangeFlow refreshTokenFlow ></SecurityDefinitions>
 
   version: 1.0.0
   title: Swagger Petstore
@@ -104,11 +104,11 @@ tags:
   - name: pet_model
     x-displayName: The Pet Model
     description: |
-      <SchemaDefinition schemaRef="#/components/schemas/Pet" showReadOnly={true} />
+      <SchemaDefinition schemaRef="#/components/schemas/Pet" showReadOnly={true} ></SchemaDefinition>
   - name: store_model
     x-displayName: The Order Model (v2)
     description: |
-      <SchemaDefinition schemaRef="#/components/schemas/Order" pointer="#/components/schemas/Order" showReadOnly={true} />
+      <SchemaDefinition schemaRef="#/components/schemas/Order" pointer="#/components/schemas/Order" showReadOnly={true} ></SchemaDefinition>
 x-tagGroups:
   - name: General
     tags:
@@ -483,7 +483,9 @@ paths:
       tags:
         - store
       summary: Returns pet inventories by status
-      description: Returns a map of status codes to quantities
+      description: |
+        Returns a map of pet status keys to their respective quantities.
+        The keys are the pet status values (available, pending, sold).
       operationId: getInventory
       responses:
         "200":
@@ -495,6 +497,10 @@ paths:
                 additionalProperties:
                   type: integer
                   format: int32
+              example:
+                available: 7
+                pending: 2
+                sold: 3
       security:
         - api_key: []
   /store/order:
