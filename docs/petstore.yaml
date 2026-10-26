@@ -485,7 +485,7 @@ paths:
       summary: Returns pet inventories by status
       description: |
         Returns a map of pet status keys to their respective quantities.
-        The keys represent the current status of the pets: `available`, `pending`, and `sold`.
+        The keys are the pet status values (available, pending, sold).
       operationId: getInventory
       responses:
         "200":
