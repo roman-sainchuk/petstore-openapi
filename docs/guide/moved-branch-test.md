@@ -5,7 +5,7 @@ This page explains how to list pets in the Petstore API.
 ## List pets
 
 Call `GET /pets` to list pets.
-Pets are listed in the order they were added.
+The API lists pets in the order they were added.
 
 ## Filter pets
 
