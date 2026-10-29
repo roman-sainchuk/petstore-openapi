@@ -10,7 +10,7 @@ The API lists pets in the order they were added.
 ## Filter pets
 
 Use the `status` query parameter to filter pets by status.
-The `status` parameter accepts `available`, `pending` and `sold`.
+The `status` parameter accepts `available`, `pending`, or `sold`.
 
 ## Limits
 
