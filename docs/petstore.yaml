@@ -52,7 +52,6 @@ info:
 
     ### Security schemes
 
-    <SecurityDefinitions passwordFlow implicitFlow clientCredentialsFlow authorizationCodeFlow deviceCodeFlow jwtBearerFlow tokenExchangeFlow refreshTokenFlow />
 
   version: 1.0.0
   title: Swagger Petstore
@@ -104,11 +103,9 @@ tags:
   - name: pet_model
     x-displayName: The Pet Model
     description: |
-      <SchemaDefinition schemaRef="#/components/schemas/Pet" showReadOnly={true} />
   - name: store_model
     x-displayName: The Order Model (v2)
     description: |
-      <SchemaDefinition schemaRef="#/components/schemas/Order" pointer="#/components/schemas/Order" showReadOnly={true} />
 x-tagGroups:
   - name: General
     tags:
