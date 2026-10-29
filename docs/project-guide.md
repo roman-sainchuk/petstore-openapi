@@ -4,7 +4,7 @@ This page explains how to place and track orders in the Petstore API.
 
 ## Place an order
 
-Call `POST /store/order` to place an order.
+Send a `POST /store/order` request to place an order.
 An order holds one pet.
 
 ## Track an order
