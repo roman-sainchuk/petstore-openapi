@@ -14,4 +14,4 @@ The `status` field shows `placed`, `approved` or `delivered`.
 
 ## Limits
 
-The store keeps an order for 30 days.
+The store keeps an order for 60 days.
