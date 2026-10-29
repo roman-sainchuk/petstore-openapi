@@ -40,3 +40,4 @@ merge non-main into main (all subsequent changes will be automerged)
 
 This line was merged in while the Writer worked.
 Another line merged in while the Writer worked.
+A third line merged in while the Writer worked.
