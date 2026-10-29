@@ -14,4 +14,4 @@ The `status` parameter accepts `available`, `pending`, or `sold`.
 
 ## Limits
 
-The API returns up to 50 pets per request.
+The API returns up to 25 pets per request.
