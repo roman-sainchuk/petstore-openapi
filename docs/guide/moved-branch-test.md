@@ -1,4 +1,4 @@
-# Pet listing guide
+# Pet listing and filtering guide
 
 This page explains how to list and filter pets in the Petstore API.
 
