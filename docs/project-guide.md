@@ -1,6 +1,6 @@
 # Order guide
 
-This page explains how to place and track orders in the Petstore API.
+This page shows how to place and track orders in the Petstore API.
 
 ## Place an order
 
