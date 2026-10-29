@@ -9,7 +9,7 @@ An order holds one pet.
 
 ## Track an order
 
-Call `GET /store/order/{orderId}` to read an order.
+Send a `GET /store/order/{orderId}` request to read an order.
 The `status` field shows `placed`, `approved` or `delivered`.
 
 ## Limits
