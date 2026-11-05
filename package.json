@@ -1,0 +1,7 @@
+{
+  "name": "petstore-docs",
+  "private": true,
+  "dependencies": {
+    "@redocly/realm-plus": "0.1.27"
+  }
+}
