@@ -462,7 +462,7 @@ paths:
       parameters:
         - name: limit
           in: query
-          description: Maximum number of pets to return (defaults to 20)
+          description: Upper bound on the number of pets in one response (defaults to 20)
           example: 10
           schema:
             type: integer
